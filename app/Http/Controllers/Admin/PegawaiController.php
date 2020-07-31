@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\PegawaiControllerRequest;
 use App\Pegawai;
+use App\Jabatan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 
@@ -31,7 +31,10 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.pegawai.create');
+        $jab = Jabatan::all();
+        return view('pages.admin.pegawai.create', [
+            'jab' => $jab
+        ]);
     }
 
     /**
@@ -46,7 +49,7 @@ class PegawaiController extends Controller
         $data['slug'] = Str::slug($request->id);
 
         Pegawai::create($data);
-        return redirect()->route('pegawai.index');
+        return redirect()->route('pegawai.index')->with('toast_success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -68,10 +71,12 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        $item = Pegawai::findOrFail($id);
+        $jab = Jabatan::all();
+        $item = Pegawai::with('jabatan')->findOrFail($id);
 
         return view('pages.admin.pegawai.edit', [
-            'item' => $item
+            'item' => $item,
+            'jab' => $jab
         ]);
     }
 
@@ -105,6 +110,6 @@ class PegawaiController extends Controller
         $item = Pegawai::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('pegawai.index');
+        return redirect()->route('pegawai.index')->with('toast_error', 'Data Berhasil Dihapus!');
     }
 }

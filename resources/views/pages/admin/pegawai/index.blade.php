@@ -17,6 +17,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nama</th>
+                            <th>Jabatan</th>
                             <th>Alamat</th>
                             <th>Tanggal</th>
                             <th>Aksi</th>
@@ -25,8 +26,9 @@
                     <tbody>
                         @forelse ($items as $item)
                         <tr>
-                            <td>{{ $item->id}}</td>
+                            <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->nama}}</td>
+                            <td>{{ $item->jabatan->jabatan}}</td>
                             <td>{{ $item->alamat}}</td>
                             <td>{{ date('d-m-Y', strtotime($item->tgllhr))}}</td>
                             <td>
@@ -56,5 +58,6 @@
         </div>
     </div>
 </div>
+@include('sweetalert::alert')
   <!-- /.container-fluid -->
 @endsection
