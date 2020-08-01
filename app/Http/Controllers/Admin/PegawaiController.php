@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Pegawai;
 use App\Jabatan;
+use App\GajiPokok;
+use App\Agama;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 
@@ -32,8 +34,12 @@ class PegawaiController extends Controller
     public function create()
     {
         $jab = Jabatan::all();
+        $gaji = GajiPokok::all();
+        $aga = Agama::all();
         return view('pages.admin.pegawai.create', [
-            'jab' => $jab
+            'jab' => $jab,
+            'gaji' => $gaji,
+            'aga' => $aga
         ]);
     }
 
@@ -72,11 +78,15 @@ class PegawaiController extends Controller
     public function edit($id)
     {
         $jab = Jabatan::all();
-        $item = Pegawai::with('jabatan')->findOrFail($id);
+        $gaji = GajiPokok::all();
+        $aga = Agama::all();
+        $item = Pegawai::with('jabatan', 'gaji_pokok', 'agama')->findOrFail($id);
 
         return view('pages.admin.pegawai.edit', [
             'item' => $item,
-            'jab' => $jab
+            'jab' => $jab,
+            'gaji' => $gaji,
+            'aga' => $aga
         ]);
     }
 

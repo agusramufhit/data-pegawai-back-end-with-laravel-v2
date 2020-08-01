@@ -29,6 +29,22 @@
                     <input type="date" value="{{ old('tgllhr')}}" name="tgllhr" class="form-control">
                 </div>
                 <div class="form-group">
+                    <select class="form-control select2" style="width: 100;" value="{{ old('agama_id')}}" name="agama_id">
+                        <option disabled value>Pilih Agama</option>
+                    @foreach ($aga as $item)
+                        <option value="{{ $item->id }}">{{ $item->agama }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control select2" style="width: 100;" value="{{ old('gaji_pokok_id')}}" name="gaji_pokok_id">
+                        <option disabled value>Pilih Gaji</option>
+                    @foreach ($gaji as $item)
+                        <option value="{{ $item->id }}">{{ $item->gaji_pokok }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <button type="submit" class="btn btn-success">Simpan Data</button>
                 </div>
         </div>

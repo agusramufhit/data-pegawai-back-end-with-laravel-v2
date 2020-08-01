@@ -18,14 +18,8 @@
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('pegawai.index')}}">
-              <i class="fas fa-fw fa-images"></i>
+              <i class="fas fa-database"></i>
               <span>Data Pegawai</span></a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              <i class="fas fa-fw fa-dollar-sign"></i>
-              <span>None2</span></a>
           </li>
 
         <hr class="sidebar-divider">

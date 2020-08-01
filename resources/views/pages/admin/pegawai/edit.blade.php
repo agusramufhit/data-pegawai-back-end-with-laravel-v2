@@ -6,6 +6,7 @@
     <div class="d-sm-flex align-items center justify-content-between mb-4 ml-2">
         <h1 class="h3 mb-0 text-gray-800">Ubah Data Pegawai {{ $item->nama}}</h1>
     </div>
+
     <div class="card card-info card-outline">
     <div class="row">
         <div class="card-body">
@@ -30,8 +31,25 @@
                 <div class="form-group">
                     <input type="date" value="{{ $item->tgllhr}}" name="tgllhr" class="form-control">
                 </div>
+                <div class="form-group">
+                    <select class="form-control select2" style="width: 100;" value="{{ old('agama_id')}}" name="agama_id">
+                        <option disabled value>Pilih Agama</option>
+                    @foreach ($aga as $item)
+                        <option value="{{ $item->id }}">{{ $item->agama }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control select2" style="width: 100;" value="{{ old('gaji_pokok_id')}}" name="gaji_pokok_id">
+                        <option disabled value>Pilih Gaji</option>
+                    @foreach ($gaji as $item)
+                        <option value="{{ $item->id }}">{{ $item->gaji_pokok }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Ubah Data</button>
-                </form>
+                </div>
         </div>
     </div>
 </div>

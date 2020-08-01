@@ -5,8 +5,8 @@ Maleo
 @endsection
 
 @section('content')
-<nav class="navbar py-2 navbar-expand-lg navbar-light">
-    <div class="container">
+<div class="container">
+<nav class="navbar py-2 navbar-expand-lg navbar-light bg-white">
         <a class="navbar-brand" href="#">
             <img src="{{ url('frontend/images/logo_maleo.png')}}" width="160" alt="">
         </a>
@@ -68,8 +68,8 @@ Maleo
 
             </ul>
         </div>
-    </div>
 </nav>
+</div>
 
 <section class="herobwa mt-5">
     <div class="container">

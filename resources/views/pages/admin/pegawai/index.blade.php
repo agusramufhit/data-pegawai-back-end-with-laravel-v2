@@ -19,7 +19,9 @@
                             <th>Nama</th>
                             <th>Jabatan</th>
                             <th>Alamat</th>
-                            <th>Tanggal</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Agama</th>
+                            <th>Gaji Pokok</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -31,6 +33,8 @@
                             <td>{{ $item->jabatan->jabatan}}</td>
                             <td>{{ $item->alamat}}</td>
                             <td>{{ date('d-m-Y', strtotime($item->tgllhr))}}</td>
+                            <td>{{ $item->agama->agama}}</td>
+                            <td>Rp. {{ $item->gaji_pokok->gaji_pokok}}</td>
                             <td>
                                 <a href="{{ route('pegawai.edit', $item->id)}}" class="btn btn-info">
                                 <i class="fa fa-pencil-alt"></i>
